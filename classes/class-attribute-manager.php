@@ -54,6 +54,4 @@ class Attribute_Manager {
 
 		return $text;
 	}
-
-
 }

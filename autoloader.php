@@ -9,7 +9,7 @@ spl_autoload_register( function ( $classname ) {
 		$classname = strtolower( $classname );
 		$classname = str_replace( '_', '-', $classname );
 
-		$filename = dirname( __FILE__ ) . '/php/class-' . $classname . '.php';
+		$filename = dirname( __FILE__ ) . '/classes/class-' . $classname . '.php';
 
 		if ( is_file( $filename ) ) {
 			require_once $filename ;
