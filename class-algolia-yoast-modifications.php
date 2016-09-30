@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Algolia Yoast modifications
 Description: Add more data to Algolia indices.
@@ -34,6 +33,9 @@ class Algolia_Yoast_Modifications {
 		$this->init_wp_search_manager();
 	}
 
+	/**
+	 * @todo add comments
+	 */
 	private function init_no_index_blacklist() {
 		$this->no_index_manager = new No_Index_Manager();
 		$this->no_index_manager->register_hooks();
