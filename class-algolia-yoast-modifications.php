@@ -41,6 +41,9 @@ class Algolia_Yoast_Modifications {
 		$this->no_index_manager->register_hooks();
 	}
 
+	/**
+	 * @todo add comments
+	 */
 	private function init_post_type_blacklist() {
 		$this->blacklist_Manager = new Blacklist_Manager();
 		$this->blacklist_Manager->register_hooks();
