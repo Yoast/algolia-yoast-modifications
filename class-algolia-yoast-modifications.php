@@ -24,12 +24,14 @@ class Algolia_Yoast_Modifications {
 	private $attribute_manager;
 	private $priority_manager;
 	private $blacklist_Manager;
+	private $wp_search_manager;
 
 	function __construct() {
 		$this->init_no_index_blacklist();
 		$this->init_attribute_manager();
 		$this->init_priority_manager();
 		$this->init_post_type_blacklist();
+		$this->init_wp_search_manager();
 	}
 
 	private function init_no_index_blacklist() {
@@ -50,6 +52,11 @@ class Algolia_Yoast_Modifications {
 	private function init_priority_manager() {
 		$this->priority_manager = new Priority_Manager();
 		$this->priority_manager->register_hooks();
+	}
+
+	private function init_wp_search_manager(){
+		$this->wp_search_manager = new WP_Search_Manager();
+		$this->wp_search_manager->register_hooks();
 	}
 }
 
