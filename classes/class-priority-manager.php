@@ -43,7 +43,7 @@ class Priority_Manager {
 
 		$cmb->add_field( array(
 			'name'             => 'Result priority',
-			'desc'             => __( 'Should this post be more likely to end up higher in the search results on kb.yoast.com', 'yoastcom' ),
+			'desc'             => __( 'Should this post be more likely to end up higher in the search results', 'yoastcom' ),
 			'id'               => '_algolia-result-priority',
 			'type'             => 'select',
 			'show_option_none' => false,
