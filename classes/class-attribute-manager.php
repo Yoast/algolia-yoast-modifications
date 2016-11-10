@@ -15,6 +15,7 @@ class Attribute_Manager {
 		add_filter( 'algolia_searchable_post_shared_attributes', array( $this, 'add_excerpt_to_post' ), 10, 2 );
 		add_filter( 'algolia_searchable_post_shared_attributes', array( $this, 'add_metadesc_to_post' ), 10, 2 );
 		add_filter( 'algolia_searchable_post_shared_attributes', array( $this, 'add_author_url' ), 10, 2 );
+		add_filter( 'algolia_searchable_post_shared_attributes', array( $this, 'add_post_modified_formatted' ), 10, 2 );
 	}
 
 	/**
@@ -41,6 +42,20 @@ class Attribute_Manager {
 	 */
 	public function add_metadesc_to_post( array $shared_attributes, \WP_Post $post ) {
 		$shared_attributes['metadesc'] = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );
+
+		return $shared_attributes;
+	}
+
+	/**
+	 * Adds the last modified date of the post to the Algolia index (formatted like November 10, 2016).
+	 *
+	 * @param array    $shared_attributes The attributes that are being indexed.
+	 * @param \WP_Post $post The post.
+	 *
+	 * @return array
+	 */
+	public function add_post_modified_formatted( array $shared_attributes, \WP_Post $post ) {
+		$shared_attributes['post_modified_formatted'] = get_the_modified_date( '', $post );
 
 		return $shared_attributes;
 	}
