@@ -75,9 +75,7 @@ class Attribute_Manager {
 			$shared_attributes['excerpt'] = $excerpt;
 		}
 		else {
-			// todo: The content filter returned null for some reason. Use this filter once we know why that happend.
-//			$post_content                 = strip_shortcodes( apply_filters( 'the_content', $post->post_content ) );
-			$post_content                 = strip_shortcodes( $post->post_content );
+			$post_content                 = strip_shortcodes( apply_filters( 'the_content', $post->post_content ) );
 			$generated_excerpt            = wp_trim_excerpt( $post_content );
 			$shared_attributes['excerpt'] = $generated_excerpt;
 		}
