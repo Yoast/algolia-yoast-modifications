@@ -2,7 +2,7 @@
 
 namespace Yoast\YoastCom\AlgoliaModifications;
 
-class Redirect_Manager {
+class Redirect_Manager implements Manager {
 
 	public function register_hooks() {
 		add_filter( 'algolia_should_index_searchable_post', array( $this, 'blacklist_redirected_posts' ), 10, 2 );

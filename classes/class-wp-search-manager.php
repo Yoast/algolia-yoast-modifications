@@ -2,7 +2,7 @@
 
 namespace Yoast\YoastCom\AlgoliaModifications;
 
-class WP_Search_Manager {
+class WP_Search_Manager implements Manager {
 
 	public function register_hooks() {
 		if ( ! is_admin() ) {

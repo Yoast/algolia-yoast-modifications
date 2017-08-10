@@ -2,7 +2,7 @@
 
 namespace Yoast\YoastCom\AlgoliaModifications;
 
-class Priority_Manager {
+class Priority_Manager implements Manager {
 
 	const DEFAULT_SEARCH_RESULT_PRIORITY = 3;
 

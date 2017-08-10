@@ -19,49 +19,20 @@ include_once 'autoloader.php';
  */
 class Algolia_Yoast_Modifications {
 
-	private $no_index_manager;
-	private $attribute_manager;
-	private $priority_manager;
-	private $blacklist_Manager;
-	private $wp_search_manager;
-
 	function __construct() {
-		$this->init_no_index_blacklist();
-		$this->init_attribute_manager();
-		$this->init_priority_manager();
-		$this->init_post_type_blacklist();
-		$this->init_wp_search_manager();
-	}
+		/** @var Manager[] $managers */
+		$managers = [
+			new No_Index_Manager(),
+			new Blacklist_Manager(),
+			new Attribute_Manager(),
+			new Priority_Manager(),
+			new WP_Search_Manager(),
+			new Redirect_Manager(),
+		];
 
-	/**
-	 * @todo add comments
-	 */
-	private function init_no_index_blacklist() {
-		$this->no_index_manager = new No_Index_Manager();
-		$this->no_index_manager->register_hooks();
-	}
-
-	/**
-	 * @todo add comments
-	 */
-	private function init_post_type_blacklist() {
-		$this->blacklist_Manager = new Blacklist_Manager();
-		$this->blacklist_Manager->register_hooks();
-	}
-
-	private function init_attribute_manager() {
-		$this->attribute_manager = new Attribute_Manager();
-		$this->attribute_manager->register_hooks();
-	}
-
-	private function init_priority_manager() {
-		$this->priority_manager = new Priority_Manager();
-		$this->priority_manager->register_hooks();
-	}
-
-	private function init_wp_search_manager(){
-		$this->wp_search_manager = new WP_Search_Manager();
-		$this->wp_search_manager->register_hooks();
+		foreach ( $managers as $manager ) {
+			$manager->register_hooks();
+		}
 	}
 }
 
