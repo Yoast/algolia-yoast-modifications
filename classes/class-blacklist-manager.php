@@ -10,6 +10,7 @@ class Blacklist_Manager {
 
 	public function blacklist_internal_kb_posts( $blacklist ) {
 		$blacklist[] = 'internal-kb';
+		$blacklist[] = 'product';
 
 		return $blacklist;
 	}
