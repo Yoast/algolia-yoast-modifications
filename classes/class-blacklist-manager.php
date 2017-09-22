@@ -2,7 +2,7 @@
 
 namespace Yoast\YoastCom\AlgoliaModifications;
 
-class Blacklist_Manager {
+class Blacklist_Manager implements Manager {
 
 	public function register_hooks() {
 		add_filter( 'algolia_post_types_blacklist', array( $this, 'blacklist_internal_kb_posts' ) );

@@ -2,10 +2,10 @@
 
 namespace Yoast\YoastCom\AlgoliaModifications;
 
-class No_Index_Manager {
+class No_Index_Manager implements Manager {
 
 	public function register_hooks() {
-		add_filter( 'algolia_should_index_searchable_post', array( $this, 'blacklist_no_index_posts'), 10, 2 );
+		add_filter( 'algolia_should_index_searchable_post', array( $this, 'blacklist_no_index_posts' ), 10, 2 );
 	}
 
 	public function blacklist_no_index_posts( $should_index, \WP_Post $post ) {

@@ -6,7 +6,7 @@ namespace Yoast\YoastCom\AlgoliaModifications;
  * Class Attribute_Manager
  * Adds attributes to the Algolia index.
  */
-class Attribute_Manager {
+class Attribute_Manager implements Manager {
 
 	/**
 	 * Registers hooks.
@@ -22,7 +22,7 @@ class Attribute_Manager {
 	 * Adds the url of the author of the post to the Algolia index.
 	 *
 	 * @param array    $shared_attributes The attributes that are being indexed.
-	 * @param \WP_Post $post The post.
+	 * @param \WP_Post $post              The post.
 	 *
 	 * @return array
 	 */
@@ -36,7 +36,7 @@ class Attribute_Manager {
 	 * Adds the Yoast SEO metadescription of the post to the Algolia index.
 	 *
 	 * @param array    $shared_attributes The attributes that are being indexed.
-	 * @param \WP_Post $post The post.
+	 * @param \WP_Post $post              The post.
 	 *
 	 * @return array
 	 */
@@ -50,7 +50,7 @@ class Attribute_Manager {
 	 * Adds the last modified date of the post to the Algolia index (formatted like November 10, 2016).
 	 *
 	 * @param array    $shared_attributes The attributes that are being indexed.
-	 * @param \WP_Post $post The post.
+	 * @param \WP_Post $post              The post.
 	 *
 	 * @return array
 	 */
@@ -64,7 +64,7 @@ class Attribute_Manager {
 	 * Adds the exerpt of the post to the Algolia index.
 	 *
 	 * @param array    $shared_attributes The attributes that are being indexed.
-	 * @param \WP_Post $post The post.
+	 * @param \WP_Post $post              The post.
 	 *
 	 * @return array
 	 */
@@ -73,8 +73,7 @@ class Attribute_Manager {
 		$excerpt = apply_filters( 'the_excerpt', get_the_excerpt( $post->ID ) );
 		if ( is_string( $excerpt ) && ! empty( $excerpt ) ) {
 			$shared_attributes['excerpt'] = $excerpt;
-		}
-		else {
+		} else {
 			$post_content                 = strip_shortcodes( apply_filters( 'the_content', $post->post_content ) );
 			$generated_excerpt            = wp_trim_excerpt( $post_content );
 			$shared_attributes['excerpt'] = $generated_excerpt;
